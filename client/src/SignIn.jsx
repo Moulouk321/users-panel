@@ -9,7 +9,7 @@ function SignIn() {
  const handleSubmit = (e) => {
   e.preventDefault();
   axios
-    .post("http://localhost:3000/login", { email, password })
+    .post("/login", { email, password })
     .then((result) => {
       console.log(result);
 	  if (result.data.message === "success") {
