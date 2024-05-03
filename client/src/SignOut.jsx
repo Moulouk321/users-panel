@@ -6,7 +6,7 @@ export default function SignOut() {
 
   const handleSignOut = async () => {
   try {
-    const response = await axios.post("http://localhost:3000/logout");
+    const response = await axios.post("/logout");
     if (response.status === 200) {
       document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     }
