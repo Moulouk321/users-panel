@@ -20,7 +20,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://users-panel-bopb.onrender.com',
+  origin: '*',
   credentials: true
 }));
 
