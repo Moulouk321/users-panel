@@ -8,7 +8,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('http://localhost:3000/validate-session', { withCredentials: true })
+    axios.get('/validate-session', { withCredentials: true })
       .then(response => {
         setIsAuthenticated(response.data.isAuthenticated);
         setIsAuthCheckComplete(true);
