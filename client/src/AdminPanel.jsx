@@ -12,7 +12,7 @@ export default function AdminPanel() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getUsers")
+      .get("/getUsers")
       .then((response) => {
         setUsers(response.data);
       })
@@ -21,7 +21,7 @@ export default function AdminPanel() {
 
 useEffect(() => {
   axios
-    .get("http://localhost:3000/getUserName", { withCredentials: true })
+    .get("/getUserName", { withCredentials: true })
     .then((response) => {
       if (response.data.username) {
 		setUser(response.data.username);
@@ -46,7 +46,7 @@ useEffect(() => {
  const handleBlock = async () => {
   try {
     for (const user of selectedUsers) {
-      const response = await axios.post("http://localhost:3000/blockUser", { userId: user._id });
+      const response = await axios.post("/blockUser", { userId: user._id });
     }
     setUsers(users.map(user => selectedUsers.includes(user) ? { ...user, status: 'Blocked' } : user));
     setSelectedUsers([]);
@@ -58,7 +58,7 @@ useEffect(() => {
 const handleUnblock = async () => {
   try {
     for (const user of selectedUsers) {
-      const response = await axios.post("http://localhost:3000/unblockUser", { userId: user._id });
+      const response = await axios.post("/unblockUser", { userId: user._id });
     }
     setUsers(users.map(user => selectedUsers.includes(user) ? { ...user, status: 'active' } : user));
     setSelectedUsers([]);
@@ -70,7 +70,7 @@ const handleUnblock = async () => {
 const handleDelete = async () => {
   try {
     for (const user of selectedUsers) {
-      const response = await axios.post("http://localhost:3000/deleteUser", { userId: user._id });
+      const response = await axios.post("/deleteUser", { userId: user._id });
     }
 	 setUsers(users.filter(user => !selectedUsers.includes(user)));
     setSelectedUsers([]);
