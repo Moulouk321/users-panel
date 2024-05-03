@@ -20,17 +20,17 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://users-panel-bopb.onrender.com',
   credentials: true
 }));
 
 app.use(express.json());
 
 app.use('/', userRouter);
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
 })
 
 app.listen(3000, () => {
